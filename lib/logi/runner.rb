@@ -7,9 +7,10 @@ module Logi::Runner
   end
 
   def run argv=ARGV
+    require 'cgi'
     post = 'example/post/about.md'
     content = File.read(post).gsub(/\[\[(.+?)(\|(.+?))?\]\]/) do
-      %Q{<a href="/#{$1}">#{$3 || $1}</a>}
+      %Q{<a href="/#{CGI.escape_html($1)}.html">#{$3 || $1}</a>}
     end
     require 'kramdown'
     require 'erb'
