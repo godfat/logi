@@ -1,20 +1,21 @@
 
-require 'logi'
-
+class Logi; end
 module Logi::Runner
   module_function
   def options
   end
 
   def run argv=ARGV
-    require 'cgi'
-    post = 'example/post/about.md'
-    content = File.read(post).gsub(/\[\[(.+?)(\|(.+?))?\]\]/) do
-      %Q{<a href="/#{CGI.escape_html($1)}.html">#{$3 || $1}</a>}
-    end
-    require 'tilt'
-    puts Tilt.new('example/layout/index.html.erb').
-           render{Tilt[post].new{content}.render}
+    require 'logi'
+    Logi.new('example').make
+  end
+
+  def post argv=ARGV
+    require 'logi/command/post'
+  end
+
+  def list argv=ARGV
+    require 'logi/command/list'
   end
 
   def parse argv

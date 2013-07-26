@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'logi/runner'
+Logi::Runner.post(ARGV)
