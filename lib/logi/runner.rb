@@ -12,8 +12,6 @@ module Logi::Runner
     content = File.read(post).gsub(/\[\[(.+?)(\|(.+?))?\]\]/) do
       %Q{<a href="/#{CGI.escape_html($1)}.html">#{$3 || $1}</a>}
     end
-    require 'kramdown'
-    require 'erb'
     require 'tilt'
     puts Tilt.new('example/layout/index.html.erb').
            render{Tilt[post].new{content}.render}
