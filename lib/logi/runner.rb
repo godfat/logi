@@ -23,7 +23,7 @@ module Logi::Runner
   def help
     maxn = options.transpose.first.map(&:size).max
     maxd = options.transpose.last .map(&:size).max
-    "Usage: saya [ruby OPTIONS] [saya OPTIONS]\n" +
+    "Usage: logi [OPTIONS]\n" +
     options.map{ |(name, desc)|
       if name.end_with?(':')
         name
