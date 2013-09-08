@@ -10,7 +10,11 @@ by Lin Jen-Shin ([godfat](http://godfat.org))
 
 ## DESCRIPTION:
 
+Highly customizable static blog/wiki generator.
+
 ## FEATURES:
+
+Stay tuned...
 
 ## REQUIREMENTS:
 

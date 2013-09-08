@@ -6,10 +6,13 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lin Jen-Shin (godfat)"]
-  s.date = "2013-07-26"
-  s.description = "## FEATURES:"
+  s.date = "2013-09-08"
+  s.description = "Highly customizable static blog/wiki generator."
   s.email = ["godfat (XD) godfat.org"]
-  s.executables = ["logi"]
+  s.executables = [
+  "logi",
+  "logi-list",
+  "logi-post"]
   s.files = [
   ".gitmodules",
   "Gemfile",
@@ -17,10 +20,23 @@ Gem::Specification.new do |s|
   "README.md",
   "Rakefile",
   "bin/logi",
+  "bin/logi-list",
+  "bin/logi-post",
   "example/config/logi.rb",
-  "example/layout/index.html.erb",
-  "example/post/about.md",
+  "example/layout/another.html.erb",
+  "example/layout/default.html.erb",
+  "example/layout/misc/about.html.erb",
+  "example/post/hello.md",
+  "example/post/index.md",
+  "example/post/misc/about.md",
+  "example/public/hello.html",
+  "example/public/index.html",
+  "example/public/misc/about.html",
   "lib/logi.rb",
+  "lib/logi/command/list.rb",
+  "lib/logi/command/post.rb",
+  "lib/logi/config.rb",
+  "lib/logi/layout/default.html.erb",
   "lib/logi/runner.rb",
   "lib/logi/version.rb",
   "logi.gemspec",
@@ -29,8 +45,8 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/godfat/logi"
   s.licenses = ["Apache License 2.0"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "2.0.5"
-  s.summary = "## FEATURES:"
+  s.rubygems_version = "2.0.7"
+  s.summary = "Highly customizable static blog/wiki generator."
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
