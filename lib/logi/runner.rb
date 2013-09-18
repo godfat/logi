@@ -3,11 +3,16 @@ class Logi; end
 module Logi::Runner
   module_function
   def options
+    @options ||=
+    [['-V, --verbose'    , 'Verbose mode (default)'],
+     ['-q, --quiet'      , 'Quiet   mode'          ],
+     ['-h, --help'       , 'Print this message'    ],
+     ['-v, --version'    , 'Print the version'     ]]
   end
 
   def run argv=ARGV
     require 'logi'
-    Logi.new('example').make
+    Logi.new(parse(argv) || '.').make
   end
 
   def post argv=ARGV
@@ -19,18 +24,43 @@ module Logi::Runner
   end
 
   def parse argv
+    options = {}
+    until argv.empty?
+      case arg = argv.shift
+      when /^-V/, '--verbose'
+        options[:quiet] = false
+        parse_next(argv, arg)
+
+      when /^-q/, '--quiet'
+        options[:quiet] = true
+        parse_next(argv, arg)
+
+      when /^-h/, '--help'
+        puts(help)
+        exit
+
+      when /^-v/, '--version'
+        require 'rib/version'
+        puts(Rib::VERSION)
+        exit
+
+      else
+        options[:path] = arg
+      end
+    end
+    options
+  end
+
+  def parse_next argv, arg
+    argv.unshift("-#{arg[2..-1]}") if arg.size > 2
   end
 
   def help
     maxn = options.transpose.first.map(&:size).max
     maxd = options.transpose.last .map(&:size).max
-    "Usage: logi [OPTIONS]\n" +
+    "Usage: logi [OPTIONS] [PATH to logi root]\n" +
     options.map{ |(name, desc)|
-      if name.end_with?(':')
-        name
-      else
-        sprintf("  %-*s  %-*s", maxn, name, maxd, desc)
-      end
+      sprintf("  %-*s  %-*s", maxn, name, maxd, desc)
     }.join("\n")
   end
 end

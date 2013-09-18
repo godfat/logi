@@ -14,6 +14,7 @@ class Logi
   def make
     contents.each do |path, content|
       output = "#{full_output_path}/#{post_name(path)}.html"
+      puts "Compiling #{path} to #{output}"
       FileUtils.mkdir_p(File.dirname(output))
       File.write(output, content)
     end
