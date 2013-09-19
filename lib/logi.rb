@@ -10,8 +10,8 @@ class Logi
   end
 
   def make
-    contents.each do |path, content|
-      @comp.write(post_output_path(path), content)
+    posts.each do |path, layout|
+      comp.write(post_output_path(path), comp.compile(path, layout))
     end
   end
 
