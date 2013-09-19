@@ -1,8 +1,6 @@
 
 require 'logi/logger'
 
-require 'tilt'
-
 require 'cgi'
 require 'fileutils'
 
