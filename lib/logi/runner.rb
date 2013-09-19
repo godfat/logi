@@ -14,9 +14,8 @@ module Logi::Runner
 
   def run argv=ARGV
     opts = parse(argv)
-    root = opts.delete(:root)
     require 'logi' # lazily load logi since we might exit earlier
-    Logi.new(root || '.', opts).make
+    Logi.new(opts).make
   end
 
   def post argv=ARGV

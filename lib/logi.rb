@@ -4,8 +4,8 @@ require 'logi/compiler'
 
 class Logi
   attr_reader :root, :comp
-  def initialize root='.', opts={}
-    @root = File.expand_path(root)
+  def initialize opts={}
+    @root = File.expand_path(opts[:root] || '.')
     @comp = Compiler.new(opts)
   end
 
