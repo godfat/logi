@@ -8,9 +8,9 @@
   <body>
     <h1>Posts listing</h1>
     <ul>
-      <% @posts.each do |post| %>
-        <li><a href="<%= post.link %>"><%= post.title %></a></li>
-      <% end %>
+    <% @posts.each do |post| %>
+      <li><a href="<%= post.link %>"><%= post.title %></a></li>
+    <% end %>
     </ul>
   </body>
 </html>
