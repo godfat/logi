@@ -10,16 +10,12 @@ class Logi
   end
 
   def make
-    posts.each do |path, layout|
-      compiler.write(config.post_output_path(path),
-                     compiler.compile(path, layout))
-    end
-  end
+    config.posts.each_value do |post|
+      content = compiler.compile(post.command,
+                                 config.post_path_for(post),
+                                 config.layout_path_for(post))
 
-  def posts
-    @posts ||= Dir["#{config.full_post_path}/**/*.*"].inject({}) do |r, path|
-      r[path] = config.layout_for(path)
-      r
+      compiler.write(config.output_path_for(post), content)
     end
   end
 

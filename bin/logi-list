@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'logi/runner'
-Logi::Runner.list(ARGV)
+require 'logi/command/list'
+Logi::Command::List.run(ARGV)

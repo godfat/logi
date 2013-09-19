@@ -6,6 +6,7 @@ require 'tilt'
 require 'fileutils'
 require 'cgi'
 
+class Logi; end
 class Logi::Compiler
   include Logi::Logger
 
@@ -14,12 +15,17 @@ class Logi::Compiler
     @options = options
   end
 
-  def compile path, layout
+  def compile command, path, layout
     content = File.read(path).gsub(/\[\[(.+?)(\|(.+?))?\]\]/) do
       %Q{<a href="/#{CGI.escape_html($1)}.html">#{$3 || $1}</a>}
     end
     log_compile(path, layout)
-    Tilt.new(layout).render{Tilt[path].new{content}.render}
+    io = IO.popen("ruby -Ilib -S logi-#{command} #{path} #{layout}", 'r+')
+    io.write(content)
+    io.close_write
+    r = io.read
+    io.close
+    r
   end
 
   def write output, content

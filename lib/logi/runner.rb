@@ -18,14 +18,6 @@ module Logi::Runner
     Logi.new(options).make
   end
 
-  def post argv=ARGV
-    require 'logi/command/post'
-  end
-
-  def list argv=ARGV
-    require 'logi/command/list'
-  end
-
   def parse argv
     options = {}
     until argv.empty?

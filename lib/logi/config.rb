@@ -1,6 +1,7 @@
 
 require 'logi/loader'
 
+class Logi; end
 class Logi::Config < Struct.new(:post_path, :layout_path,
                                 :output_path, :default_layout)
   def self.default_post_path
@@ -26,13 +27,28 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
     Logi::Loader.new(self).load if File.exist?(path)
   end
 
+  def posts
+    @posts ||= {}
+  end
+
   def path
     "#{options[:root]}/config/logi.rb"
   end
 
-  def layout_for post
-    # layout_path || default_layout ||
-    self.class.default_layout
+  def post_path_for post
+    "#{options[:root]}/#{post_path}/#{post.path}"
+  end
+
+  def layout_path_for post
+    if layout = post.options[:layout] || default_layout
+      "#{options[:root]}/#{layout_path}/#{layout}"
+    else
+      self.class.default_layout
+    end
+  end
+
+  def output_path_for post
+    "#{options[:root]}/#{output_path}/#{post.path.sub(/\..+$/, '')}.html"
   end
 
   def post_path
@@ -45,22 +61,6 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
 
   def output_path
     super || self.class.default_output_path
-  end
-
-  def post_output_path path
-    "#{full_output_path}/#{post_name(path)}.html"
-  end
-
-  def post_name path
-    path.sub("#{full_post_path}/", '').sub(/\..+$/, '')
-  end
-
-  def full_post_path
-    "#{options[:root]}/#{post_path}"
-  end
-
-  def full_output_path
-    "#{options[:root]}/#{output_path}"
   end
 
   def commands
