@@ -31,10 +31,11 @@ class Logi::Compiler
 
   private
   def log_compile command, path, layout
+    w = red('logi-wiki')
     c = red("logi-#{command}")
     p = magenta(strip_path(path))
     l = yellow(strip_path(layout))
-    log "#{c} #{p} #{l}"
+    log "#{w} #{p} |\n#{c} #{p} #{l}"
   end
 
   def log_write path
