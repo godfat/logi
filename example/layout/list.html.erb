@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Logi's example blog</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Posts listing</h1>
+    <ul>
+      <% @posts.each do |post| %>
+        <li><a href="<%= post.link %>"><%= post.title %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
