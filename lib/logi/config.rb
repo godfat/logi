@@ -70,8 +70,4 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
   def output_path
     super || self.class.default_output_path
   end
-
-  def commands
-    @commands ||= []
-  end
 end
