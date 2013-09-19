@@ -30,6 +30,7 @@ Highly customizable static blog/wiki generator.
 ## INSTALLATION:
 
     gem install logi
+    gem install tilt # if you want to use built-in generators
 
 ## SYNOPSIS:
 
