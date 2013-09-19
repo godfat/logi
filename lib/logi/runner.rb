@@ -13,9 +13,9 @@ module Logi::Runner
   end
 
   def run argv=ARGV
-    opts = parse(argv)
+    options = parse(argv)
     require 'logi' # lazily load logi since we might exit earlier
-    Logi.new(opts).make
+    Logi.new(options).make
   end
 
   def post argv=ARGV
@@ -56,7 +56,7 @@ module Logi::Runner
         exit
 
       else
-        options[:root] = arg
+        options[:root] = File.expand_path(arg)
       end
     end
     options
