@@ -16,8 +16,8 @@ task 'gem:spec' do
     require 'logi/version'
     s.name    = 'logi'
     s.version = Logi::VERSION
-    %w[tilt].each{ |g| s.add_dependency(g) }
-    %w[bacon muack].each{ |g| s.add_development_dependency(g) }
+    %w[].each{ |g| s.add_dependency(g) }
+    %w[bacon muack tilt].each{ |g| s.add_development_dependency(g) }
   end
 
   Gemgem.write
