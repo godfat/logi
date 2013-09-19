@@ -30,6 +30,8 @@ class Logi::Compiler
     log_write(output)
     FileUtils.mkdir_p(File.dirname(output))
     IO.copy_stream(io, output)
+  ensure
+    io.close
   end
 
   private
