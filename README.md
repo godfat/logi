@@ -67,7 +67,7 @@ preprocessed for the wiki syntax.
 
 So you could think of it like this:
 
-    logi-wiki post.md | logi-pandoc post.md layout.html > output.html
+    logi-wiki post.md | logi-pandoc post.md layout.html.erb > post.html
 
 For a more complex generator, you could see [logi-list](bin/logi-list).
 
