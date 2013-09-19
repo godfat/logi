@@ -62,14 +62,15 @@ You can check the [example blog](example). Or read help:
 Suppose you want to use [pandoc][] to generate your post, you could build
 a command line tool called `logi-pandoc` which the first argument would
 be the path to the original post file, and the second argument to the
-path of the layout file. Also, read from stdin for post content
+path of the layout file. Also, read from `stdin` for post content
 preprocessed for the wiki syntax.
 
 So you could think of it like this:
 
     logi-wiki post.md | logi-pandoc post.md layout.html.erb > post.html
 
-For a more complex generator, you could see [logi-list](bin/logi-list).
+For a more complex generator, you could see [logi-list](bin/logi-list)
+which would generate a post listing all the posts.
 
 [pandoc]: http://johnmacfarlane.net/pandoc/
 
