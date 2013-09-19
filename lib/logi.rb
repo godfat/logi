@@ -11,11 +11,11 @@ class Logi
 
   def make
     config.posts.each_value do |post|
-      content = compiler.compile(post.command,
-                                 config.post_path_for(post),
-                                 config.layout_path_for(post))
+      io = compiler.compile(post.command,
+                            config.post_path_for(post),
+                            config.layout_path_for(post))
 
-      compiler.write(config.output_path_for(post), content)
+      compiler.write(config.output_path_for(post), io)
     end
   end
 
