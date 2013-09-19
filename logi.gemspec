@@ -13,7 +13,8 @@ Gem::Specification.new do |s|
   s.executables = [
   "logi",
   "logi-list",
-  "logi-post"]
+  "logi-post",
+  "logi-wiki"]
   s.files = [
   ".gitignore",
   ".gitmodules",
@@ -24,6 +25,7 @@ Gem::Specification.new do |s|
   "bin/logi",
   "bin/logi-list",
   "bin/logi-post",
+  "bin/logi-wiki",
   "example/config/logi.rb",
   "example/layout/another.html.erb",
   "example/layout/default.html.erb",
@@ -37,6 +39,7 @@ Gem::Specification.new do |s|
   "lib/logi.rb",
   "lib/logi/command/list.rb",
   "lib/logi/command/post.rb",
+  "lib/logi/command/wiki.rb",
   "lib/logi/compiler.rb",
   "lib/logi/config.rb",
   "lib/logi/layout/default.html.erb",
