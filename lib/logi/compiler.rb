@@ -43,16 +43,4 @@ class Logi::Compiler
   def log_write path
     log green("Writing to #{strip_path(path)}")
   end
-
-  def strip_path path
-    strip_home_path(strip_cwd_path(path))
-  end
-
-  def strip_home_path path
-    path.sub(ENV['HOME'], '~')
-  end
-
-  def strip_cwd_path path
-    path.sub(Dir.pwd, '.')
-  end
 end

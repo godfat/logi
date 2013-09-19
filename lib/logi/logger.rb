@@ -1,6 +1,7 @@
 
 class Logi; end
 module Logi::Logger
+  module_function
   def log msg
     return if options[:quiet]
     puts msg
@@ -22,5 +23,17 @@ module Logi::Logger
     else
       "\e[#{rgb}m#{text}\e[0m"
     end
+  end
+
+  def strip_path path
+    strip_home_path(strip_cwd_path(path))
+  end
+
+  def strip_home_path path
+    path.sub(ENV['HOME'], '~')
+  end
+
+  def strip_cwd_path path
+    path.sub(Dir.pwd, '.')
   end
 end
