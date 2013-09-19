@@ -4,10 +4,12 @@ module Logi::Runner
   module_function
   def options
     @options ||=
-    [['-V, --verbose'    , 'Verbose mode (default)'],
-     ['-q, --quiet'      , 'Quiet   mode'          ],
-     ['-h, --help'       , 'Print this message'    ],
-     ['-v, --version'    , 'Print the version'     ]]
+    [['-c, --color'      , '   Color mode (default)'],
+     ['-n, --no-color'   , 'No color mode'          ],
+     ['-V, --verbose'    , ' Verbose mode (default)'],
+     ['-q, --quiet'      , '   Quiet mode'          ],
+     ['-h, --help'       , 'Print this message'     ],
+     ['-v, --version'    , 'Print the version'      ]]
   end
 
   def run argv=ARGV
@@ -29,6 +31,14 @@ module Logi::Runner
     options = {}
     until argv.empty?
       case arg = argv.shift
+      when /^-c/, '--color'
+        options[:nocolor] = false
+        parse_next(argv, arg)
+
+      when /^-n/, '--no-color'
+        options[:nocolor] = true
+        parse_next(argv, arg)
+
       when /^-V/, '--verbose'
         options[:quiet] = false
         parse_next(argv, arg)
