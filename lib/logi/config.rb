@@ -16,12 +16,12 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
     'public'
   end
 
-  def self.default_layout
-    File.expand_path("#{__dir__}/layout/default.html.erb")
-  end
-
   def self.default_command
     'post'
+  end
+
+  def self.default_layout
+    File.expand_path("#{__dir__}/layout/default.html.erb")
   end
 
   attr_reader :options
