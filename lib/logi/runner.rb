@@ -12,6 +12,7 @@ module Logi::Runner
      ['-h, --help'       , 'Print this message'     ],
      ['-v, --version'    , 'Print the version'      ],
      ['defaults:'        , ''                       ],
+     ['  root directory' , Logi::Config.  default_root_path],
      ['  post directory' , Logi::Config.  default_post_path],
      ['layout directory' , Logi::Config.default_layout_path],
      ['output directory' , Logi::Config.default_output_path],

@@ -4,22 +4,11 @@ require 'logi/loader'
 class Logi; end
 class Logi::Config < Struct.new(:post_path, :layout_path,
                                 :output_path, :default_layout)
-  def self.default_post_path
-    'post'
-  end
-
-  def self.default_layout_path
-    'layout'
-  end
-
-  def self.default_output_path
-    'public'
-  end
-
-  def self.default_command
-    'post'
-  end
-
+  def self.default_root_path  ; '.'     ; end
+  def self.default_post_path  ; 'post'  ; end
+  def self.default_layout_path; 'layout'; end
+  def self.default_output_path; 'public'; end
+  def self.default_command    ; 'post'  ; end
   def self.default_layout
     File.expand_path("#{__dir__}/layout/default.html.erb")
   end
@@ -36,7 +25,7 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
   end
 
   def root
-    options[:root]
+    options[:root] || self.class.default_root_path
   end
 
   def path
