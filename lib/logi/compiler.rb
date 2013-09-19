@@ -18,9 +18,19 @@ class Logi::Compiler
     Tilt.new(layout).render{Tilt[path].new{content}.render}
   end
 
+  def write output, content
+    log_write(output)
+    FileUtils.mkdir_p(File.dirname(output))
+    File.write(output, content)
+  end
+
   private
   def log_compile path, layout
     log "Compiling #{strip_path(path)} with #{strip_path(layout)}"
+  end
+
+  def log_write path
+    log "Writing to #{strip_path(path)}"
   end
 
   def log msg

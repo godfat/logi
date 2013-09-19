@@ -11,9 +11,7 @@ class Logi
 
   def make
     contents.each do |path, content|
-      output = "#{full_output_path}/#{post_name(path)}.html"
-      FileUtils.mkdir_p(File.dirname(output))
-      File.write(output, content)
+      @comp.write(post_output_path(path), content)
     end
   end
 
@@ -45,6 +43,10 @@ class Logi
 
   def output_path
     config['output_path'] || Logi::Config.default_output_path
+  end
+
+  def post_output_path path
+    "#{full_output_path}/#{post_name(path)}.html"
   end
 
   def post_name path
