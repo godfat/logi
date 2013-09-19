@@ -12,7 +12,9 @@ module Logi::Runner
 
   def run argv=ARGV
     require 'logi'
-    Logi.new(parse(argv) || '.').make
+    opts = parse(argv)
+    root = opts.delete(:root)
+    Logi.new(root || '.', opts).make
   end
 
   def post argv=ARGV
@@ -45,7 +47,7 @@ module Logi::Runner
         exit
 
       else
-        options[:path] = arg
+        options[:root] = arg
       end
     end
     options

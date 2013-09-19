@@ -1,20 +1,17 @@
 
 require 'logi/config'
-
-require 'fileutils'
-require 'cgi'
-require 'tilt'
+require 'logi/compiler'
 
 class Logi
-  attr_reader :root
-  def initialize root='.'
+  attr_reader :root, :comp
+  def initialize root='.', opts={}
     @root = File.expand_path(root)
+    @comp = Compiler.new(opts)
   end
 
   def make
     contents.each do |path, content|
       output = "#{full_output_path}/#{post_name(path)}.html"
-      puts "Compiling #{path} to #{output}"
       FileUtils.mkdir_p(File.dirname(output))
       File.write(output, content)
     end
@@ -29,10 +26,7 @@ class Logi
 
   def contents
     @contents ||= posts.inject({}) do |r, (path, layout)|
-      content = File.read(path).gsub(/\[\[(.+?)(\|(.+?))?\]\]/) do
-        %Q{<a href="/#{CGI.escape_html($1)}.html">#{$3 || $1}</a>}
-      end
-      r[path] = Tilt.new(layout).render{Tilt[path].new{content}.render}
+      r[path] = comp.compile(path, layout)
       r
     end
   end
