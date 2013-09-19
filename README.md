@@ -52,7 +52,12 @@ You can check the [example blog](example). Or read help:
           post command  post
            layout file  /path/to/logi/lib/logi/layout/default.html.erb
 
-## Write your own generator
+## Built-in generators
+
+* [logi-post](bin/logi-post)
+* [logi-list](bin/logi-list)
+
+## Write your own generators
 
 Suppose you want to use [pandoc][] to generate your post, you could build
 a command line tool called `logi-pandoc` which the first argument would
@@ -64,8 +69,7 @@ So you could think of it like this:
 
     logi-wiki post.md | logi-pandoc post.md layout.html > output.html
 
-There's also a built-in `logi-list` generator which could generate a
-list of posts. You could read it as another example.
+For a more complex generator, you could see [logi-list](bin/logi-list).
 
 [pandoc]: http://johnmacfarlane.net/pandoc/
 
