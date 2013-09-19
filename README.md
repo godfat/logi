@@ -17,7 +17,7 @@ Highly customizable static blog/wiki generator.
 * Generate posts via external commands, so you can customize it easily.
 * Built-in post/list generator using [tilt][]. Support any tilt format.
 * Specify configuration in [config/logi.rb](example/config/logi.rb).
-* Basic wiki syntax: [[wiki]] or [[wiki|text]].
+* Basic wiki syntax: `[[wiki]]` or `[[wiki|text]]`.
 * Write your own layouts.
 
 [tilt]: https://github.com/rtomayko/tilt
