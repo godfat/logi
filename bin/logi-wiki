@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'logi/command/wiki'
+Logi::Command::Wiki.run(ARGV)
