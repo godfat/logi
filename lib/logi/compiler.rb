@@ -23,15 +23,13 @@ class Logi::Compiler
     io = IO.popen("ruby -Ilib -S logi-#{command} #{path} #{layout}", 'r+')
     io.write(content)
     io.close_write
-    r = io.read
-    io.close
-    r
+    io
   end
 
-  def write output, content
+  def write output, io
     log_write(output)
     FileUtils.mkdir_p(File.dirname(output))
-    File.write(output, content)
+    IO.copy_stream(io, output)
   end
 
   private
