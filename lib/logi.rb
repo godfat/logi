@@ -3,9 +3,10 @@ require 'logi/config'
 require 'logi/compiler'
 
 class Logi
-  attr_reader :options, :compiler
+  attr_reader :options, :config, :compiler
   def initialize options={}
     @options  = options
+    @config   = Config.new(options)
     @compiler = Compiler.new(options)
   end
 
@@ -17,9 +18,5 @@ class Logi
 
       compiler.write(config.output_path_for(post), io)
     end
-  end
-
-  def config
-    @config ||= Config.new(options)
   end
 end

@@ -3,8 +3,8 @@ require 'logi/logger'
 
 require 'tilt'
 
-require 'fileutils'
 require 'cgi'
+require 'fileutils'
 
 class Logi; end
 class Logi::Compiler

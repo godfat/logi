@@ -31,24 +31,28 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
     @posts ||= {}
   end
 
+  def root
+    options[:root]
+  end
+
   def path
-    "#{options[:root]}/config/logi.rb"
+    "#{root}/config/logi.rb"
   end
 
   def post_path_for post
-    "#{options[:root]}/#{post_path}/#{post.path}"
+    "#{root}/#{post_path}/#{post.path}"
   end
 
   def layout_path_for post
     if layout = post.options[:layout] || default_layout
-      "#{options[:root]}/#{layout_path}/#{layout}"
+      "#{root}/#{layout_path}/#{layout}"
     else
       self.class.default_layout
     end
   end
 
   def output_path_for post
-    "#{options[:root]}/#{output_path}/#{post.path.sub(/\..+$/, '')}.html"
+    "#{root}/#{output_path}/#{post.path.sub(/\..+$/, '')}.html"
   end
 
   def post_path
