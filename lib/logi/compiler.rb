@@ -19,8 +19,8 @@ class Logi::Compiler
     content = File.read(path).gsub(/\[\[(.+?)(\|(.+?))?\]\]/) do
       %Q{<a href="/#{CGI.escape_html($1)}.html">#{$3 || $1}</a>}
     end
-    log_compile(path, layout)
-    io = IO.popen("ruby -Ilib -S logi-#{command} #{path} #{layout}", 'r+')
+    log_compile(command, path, layout)
+    io = IO.popen("logi-#{command} #{path} #{layout}", 'r+')
     io.write(content)
     io.close_write
     io
@@ -35,12 +35,14 @@ class Logi::Compiler
   end
 
   private
-  def log_compile path, layout
-    log "#{magenta("Compiling  #{strip_path(path)}")} with\n" \
-        "   layout: #{strip_path(layout)}"
+  def log_compile command, path, layout
+    c = red("logi-#{command}")
+    p = magenta(strip_path(path))
+    l = yellow(strip_path(layout))
+    log "#{c} #{p} #{l}"
   end
 
   def log_write path
-    log green("Writing to #{strip_path(path)}")
+    log "> #{green(strip_path(path))}"
   end
 end
