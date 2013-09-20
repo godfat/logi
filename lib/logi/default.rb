@@ -16,4 +16,9 @@ module Logi::Default
   def example_directory
     File.expand_path("#{__dir__}/../../example")
   end
+
+  # For Ruby 1.9-
+  def __dir__
+    File.dirname(__FILE__)
+  end unless respond_to?(:__dir__, true)
 end
