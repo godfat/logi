@@ -1,9 +1,13 @@
 
+require 'logi/command'
+
 require 'tilt'
 
 class  Logi         ; end
 module Logi::Command; end
 module Logi::Command::List
+  extend Logi::Command
+
   Post = Struct.new(:link, :title)
 
   module_function
@@ -14,6 +18,6 @@ module Logi::Command::List
       name = post.sub("#{dir}/", '')
       Post.new(name.sub(/\..+$/, '.html'), name.sub(/\..+$/, ''))
     }
-    puts Tilt.new(layout).render(self)
+    puts Tilt.new(check_layout(layout)).render(self)
   end
 end

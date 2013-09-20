@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   "example/public/list.html",
   "example/public/misc/about.html",
   "lib/logi.rb",
+  "lib/logi/command.rb",
   "lib/logi/command/list.rb",
   "lib/logi/command/post.rb",
   "lib/logi/command/wiki.rb",
