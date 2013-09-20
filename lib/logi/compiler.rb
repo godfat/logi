@@ -13,15 +13,16 @@ class Logi::Compiler
   end
 
   def compile command, path, layout
-    log_compile(command, path, layout)
     wiki = IO.popen("logi-wiki #{path}", 'r')
     out  = IO.popen("logi-#{command} #{path} #{layout}", 'r+')
     IO.copy_stream(wiki, out)
     out.close_write
+    log_compile(command, path, layout) unless out.eof?
     out
   end
 
   def write output, out
+    return if out.eof?
     log_write(output)
     FileUtils.mkdir_p(File.dirname(output))
     IO.copy_stream(out, output)
