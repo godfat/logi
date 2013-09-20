@@ -24,13 +24,41 @@ Highly customizable static blog/wiki generator.
 
 ## REQUIREMENTS:
 
-* Tested with MRI (official CRuby) 2.0.0, Rubinius and JRuby.
+* Ruby 2.0+ (Also tested with JRuby and Rubinius)
 * Tilt for built-in post/list generator: `gem install tilt`
 
 ## INSTALLATION:
 
+If you have Ruby installed, you could simply run:
+
     gem install logi
-    gem install tilt # if you want to use built-in generators
+    gem install tilt     # If you want to use built-in generators
+    gem install kramdown # If you want to use Markdown with tilt
+
+If you need to install Ruby, first you should try the one provided
+by your package manager.
+
+For Arch Linux, run:
+
+    sudo pacman -Syu     # Update packages list first
+    sudo pacman -S ruby
+
+For Mac OS X, if you have Homebrew installed, run:
+
+    brew update          # Update packages list first
+    brew install ruby --with-doc
+
+For Windows, you might want to try [RubyInstaller][].
+
+If your package manager does not yet provide Ruby 2.0,
+you could try [ruby-install][] which could compile and
+handle Ruby's own dependencies for you.
+
+Or just [grab the source tarball][ruby-download] and install it manually.
+
+[RubyInstaller]: http://rubyinstaller.org/
+[ruby-install]: https://github.com/postmodern/ruby-install
+[ruby-download]: https://www.ruby-lang.org/en/downloads/
 
 ## SYNOPSIS:
 
