@@ -32,19 +32,19 @@ module Logi::Runner
     until argv.empty?
       case arg = argv.shift
       when /^-c/, '--color'
-        options[:nocolor] = false
+        ENV['LOGI_NOCOLOR'] = (options[:nocolor] = false).to_s
         parse_next(argv, arg)
 
       when /^-n/, '--no-color'
-        options[:nocolor] = true
+        ENV['LOGI_NOCOLOR'] = (options[:nocolor] = true).to_s
         parse_next(argv, arg)
 
       when /^-V/, '--verbose'
-        options[:quiet] = false
+        ENV['LOGI_QUIET'] = (options[:quiet] = false).to_s
         parse_next(argv, arg)
 
       when /^-q/, '--quiet'
-        options[:quiet] = true
+        ENV['LOGI_QUIET'] = (options[:quiet] = true).to_s
         parse_next(argv, arg)
 
       when /^-h/, '--help'

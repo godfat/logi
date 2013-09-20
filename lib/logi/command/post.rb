@@ -29,6 +29,18 @@ module Logi::Command::Post
   end
 
   def options
-    {:quiet => false}
+    @options ||= {:quiet   => tribool(ENV['LOGI_QUIET'  ]),
+                  :nocolor => tribool(ENV['LOGI_NOCOLOR'])}
+  end
+
+  def tribool value
+    case value
+    when 'true'
+      true
+    when 'false'
+      false
+    else
+      nil
+    end
   end
 end
