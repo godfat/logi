@@ -18,7 +18,9 @@ module Logi::Runner
      ['output directory' , Logi::Default.default_output_path],
      ['    post command' , Logi::Default.default_command    ],
      ['     layout file' , Logi::Logger.strip_path(
-                             Logi::Default.default_layout)  ]]
+                             Logi::Default.default_layout)  ],
+     ['    example site' , Logi::Logger.strip_path(
+                             Logi::Default.example_directory)]]
   end
 
   def run argv=ARGV

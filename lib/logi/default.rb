@@ -13,4 +13,7 @@ module Logi::Default
   def empty_layout
     File.expand_path("#{__dir__}/layout/empty.html.erb")
   end
+  def example_directory
+    File.expand_path("#{__dir__}/../../example")
+  end
 end
