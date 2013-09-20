@@ -4,7 +4,7 @@ module Logi::Logger
   module_function
   def log msg
     return if options[:quiet]
-    puts msg
+    $stderr.puts msg
   end
 
   def   black text; color(30, text); end
@@ -18,7 +18,7 @@ module Logi::Logger
   def color rgb, text
     if nocolor = options[:nocolor]
       text
-    elsif nocolor.nil? && !$stdout.tty? # auto-detect
+    elsif nocolor.nil? && !$stderr.tty? # auto-detect
       text
     else
       "\e[#{rgb}m#{text}\e[0m"
