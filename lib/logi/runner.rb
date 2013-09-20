@@ -12,13 +12,13 @@ module Logi::Runner
      ['-h, --help'       , 'Print this message'     ],
      ['-v, --version'    , 'Print the version'      ],
      ['defaults:'        , ''                       ],
-     ['  root directory' , Logi::Config.  default_root_path],
-     ['  post directory' , Logi::Config.  default_post_path],
-     ['layout directory' , Logi::Config.default_layout_path],
-     ['output directory' , Logi::Config.default_output_path],
-     ['    post command' , Logi::Config.default_command    ],
+     ['  root directory' , Logi::Default.  default_root_path],
+     ['  post directory' , Logi::Default.  default_post_path],
+     ['layout directory' , Logi::Default.default_layout_path],
+     ['output directory' , Logi::Default.default_output_path],
+     ['    post command' , Logi::Default.default_command    ],
      ['     layout file' , Logi::Logger.strip_path(
-                             Logi::Config.default_layout)  ]]
+                             Logi::Default.default_layout)  ]]
   end
 
   def run argv=ARGV
@@ -68,10 +68,10 @@ module Logi::Runner
   end
 
   def help
-    require 'logi/config'
+    require 'logi/default'
     require 'logi/logger'
     optt = options.transpose
-    maxn = optt.first.map(&:size).max
+    maxn =  optt.first.map(&:size).max
     maxd = [optt.last .map(&:size).max, `tput cols`.to_i - maxn - 4].min
     "Usage: logi [OPTIONS] [PATH to logi root]\n" +
     options.map{ |(name, desc)|

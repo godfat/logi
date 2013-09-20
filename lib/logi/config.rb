@@ -1,18 +1,10 @@
 
+require 'logi/default'
 require 'logi/loader'
 
 class Logi; end
 class Logi::Config < Struct.new(:post_path, :layout_path,
                                 :output_path, :default_layout)
-  def self.default_root_path  ; '.'     ; end
-  def self.default_post_path  ; 'post'  ; end
-  def self.default_layout_path; 'layout'; end
-  def self.default_output_path; 'public'; end
-  def self.default_command    ; 'post'  ; end
-  def self.default_layout
-    File.expand_path("#{__dir__}/layout/default.html.erb")
-  end
-
   attr_reader :options
   attr_accessor
   def initialize options={}
@@ -25,7 +17,7 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
   end
 
   def root
-    options[:root] || self.class.default_root_path
+    options[:root] || Logi::Default.default_root_path
   end
 
   def path
@@ -40,7 +32,7 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
     if layout = post.options[:layout] || default_layout
       "#{root}/#{layout_path}/#{layout}"
     else
-      self.class.default_layout
+      Logi::Default.default_layout
     end
   end
 
@@ -49,14 +41,14 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
   end
 
   def post_path
-    super || self.class.default_post_path
+    super || Logi::Default.default_post_path
   end
 
   def layout_path
-    super || self.class.default_layout_path
+    super || Logi::Default.default_layout_path
   end
 
   def output_path
-    super || self.class.default_output_path
+    super || Logi::Default.default_output_path
   end
 end
