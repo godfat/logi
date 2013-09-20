@@ -52,8 +52,8 @@ module Logi::Runner
         exit
 
       when /^-v/, '--version'
-        require 'rib/version'
-        puts(Rib::VERSION)
+        require 'logi/version'
+        puts(Logi::VERSION)
         exit
 
       else
