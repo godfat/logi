@@ -54,15 +54,18 @@ Gem::Specification.new do |s|
   "lib/logi/logger.rb",
   "lib/logi/post.rb",
   "lib/logi/runner.rb",
+  "lib/logi/test.rb",
   "lib/logi/version.rb",
   "logi.gemspec",
   "task/.gitignore",
-  "task/gemgem.rb"]
+  "task/gemgem.rb",
+  "test/test_example.rb"]
   s.homepage = "https://github.com/godfat/logi"
   s.licenses = ["Apache License 2.0"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.1.5"
   s.summary = "Highly customizable static blog/wiki generator."
+  s.test_files = ["test/test_example.rb"]
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
