@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-# stub: logi 0.1.0 ruby lib
+# stub: logi 0.1.1 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "logi"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lin Jen-Shin (godfat)"]
-  s.date = "2013-09-29"
+  s.date = "2013-09-30"
   s.description = "Highly customizable static blog/wiki generator."
   s.email = ["godfat (XD) godfat.org"]
   s.executables = [
