@@ -66,7 +66,7 @@ Or just [grab the source tarball][ruby-download] and install it manually.
 You can check the [example blog](example). Or read help:
 
     $ logi -h
-    Usage: logi \[OPTIONS\] \[PATH to logi root\]
+    Usage: logi [OPTIONS] [PATH to logi root]
     logi options:
       -c, --color          Color mode (default)
       -n, --no-color    No color mode
