@@ -2,7 +2,7 @@
 require 'logi/test'
 
 describe Logi do
-  logi = Logi.new(:root => "#{__dir__}/../example")
+  logi = Logi.new(:root => "#{File.dirname(__FILE__)}/../example")
   conf = logi.config
   comp = logi.compiler
 
