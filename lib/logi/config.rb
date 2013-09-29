@@ -17,7 +17,7 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
   end
 
   def root
-    File.expand_path(options[:root] || Logi::Default.default_root_path)
+    File.expand_path(options[:root] || Logi::Default.root_path)
   end
 
   def path
@@ -32,7 +32,7 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
     if layout = post.options[:layout] || default_layout
       "#{root}/#{layout_path}/#{layout}"
     else
-      Logi::Default.default_layout
+      Logi::Default.layout
     end
   end
 
@@ -41,14 +41,14 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
   end
 
   def post_path
-    super || Logi::Default.default_post_path
+    super || Logi::Default.post_path
   end
 
   def layout_path
-    super || Logi::Default.default_layout_path
+    super || Logi::Default.layout_path
   end
 
   def output_path
-    super || Logi::Default.default_output_path
+    super || Logi::Default.output_path
   end
 end

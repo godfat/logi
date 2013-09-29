@@ -12,13 +12,13 @@ module Logi::Runner
      ['-h, --help'       , 'Print this message'     ],
      ['-v, --version'    , 'Print the version'      ],
      ['defaults:'        , ''                       ],
-     ['  root directory' , Logi::Default.  default_root_path],
-     ['  post directory' , Logi::Default.  default_post_path],
-     ['layout directory' , Logi::Default.default_layout_path],
-     ['output directory' , Logi::Default.default_output_path],
-     ['    post command' , Logi::Default.default_command    ],
+     ['  root directory' , Logi::Default.  root_path],
+     ['  post directory' , Logi::Default.  post_path],
+     ['layout directory' , Logi::Default.layout_path],
+     ['output directory' , Logi::Default.output_path],
+     ['    post command' , Logi::Default.command    ],
      ['     layout file' , Logi::Logger.strip_path(
-                             Logi::Default.default_layout)  ],
+                             Logi::Default.layout)  ],
      ['    example site' , Logi::Logger.strip_path(
                              Logi::Default.example_directory)]]
   end
