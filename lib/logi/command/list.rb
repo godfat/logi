@@ -10,7 +10,7 @@ module Logi::Command::List
 
   class Post < Struct.new(:link, :title)
     def <=> that
-      link <=> that
+      link <=> that.link
     end
   end
 
