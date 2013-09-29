@@ -16,9 +16,8 @@ class Logi::Compiler
     wiki = IO.popen("logi-wiki #{path}", 'r')
     out  = IO.popen("logi-#{command} #{path} #{layout}", 'r+')
     copy_stream(wiki, out)
-    return out if out.eof?
     out.close_write
-    log_compile(command, path, layout)
+    log_compile(command, path, layout) unless out.eof?
     out
   end
 
