@@ -27,7 +27,7 @@ class Logi::Compiler
     FileUtils.mkdir_p(File.dirname(output))
     copy_stream(out, output)
   ensure
-    out.close
+    out.close unless out.closed?
   end
 
   def copy_stream from, to
@@ -35,7 +35,7 @@ class Logi::Compiler
   rescue TypeError # JRuby can only copy from file to file
     to.write(from.read(8192)) until from.eof?
   ensure
-    from.close
+    from.close unless from.closed?
   end
 
   private
