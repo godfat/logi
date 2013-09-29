@@ -11,3 +11,8 @@ module Kernel
     self == rhs
   end
 end
+
+dir = File.expand_path("#{File.dirname(__FILE__)}/../../")
+$LOAD_PATH.unshift("#{dir}/lib")
+ENV['RUBYLIB'] = "#{dir}/lib:#{ENV['RUBYLIB']}"
+ENV['PATH']    = "#{dir}/bin:#{ENV['PATH']}"
