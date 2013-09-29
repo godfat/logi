@@ -1,6 +1,10 @@
 
 class Logi; end
 module Logi::Command
+  def command
+    name[/[^:]+$/].downcase
+  end
+
   module_function
   def check_argv path, layout
     [check_path(path), check_path(layout)]
@@ -25,7 +29,9 @@ module Logi::Command
       require 'logi/logger'
       extend Logi::Logger
       log red("WARN: Layout does not exist: #{cyan(strip_path(layout))}")
-      Logi::Default.empty_layout
+      default = Logi::Default.layout_for(self)
+      log red("WARN: Fallback to the default: #{cyan(strip_path(default))}")
+      default
     end
   end
 
