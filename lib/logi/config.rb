@@ -17,7 +17,7 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
   end
 
   def root
-    options[:root] || Logi::Default.default_root_path
+    File.expand_path(options[:root] || Logi::Default.default_root_path)
   end
 
   def path
