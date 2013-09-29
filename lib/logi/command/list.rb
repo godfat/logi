@@ -8,7 +8,11 @@ module Logi::Command; end
 module Logi::Command::List
   extend Logi::Command
 
-  Post = Struct.new(:link, :title)
+  Post = Struct.new(:link, :title) do
+    def <=> that
+      link <=> that
+    end
+  end
 
   module_function
   def run argv
@@ -17,7 +21,7 @@ module Logi::Command::List
     @posts = Dir["#{dir}/**/*.*"].map{ |post|
       name = post.sub("#{dir}/", '')
       Post.new(name.sub(/\..+$/, '.html'), name.sub(/\..+$/, ''))
-    }
+    }.sort
     puts Tilt.new(check_layout(layout)).render(self)
   end
 end
