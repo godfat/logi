@@ -75,14 +75,17 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bacon>, [">= 0"])
       s.add_development_dependency(%q<muack>, [">= 0"])
       s.add_development_dependency(%q<tilt>, [">= 0"])
+      s.add_development_dependency(%q<kramdown>, [">= 0"])
     else
       s.add_dependency(%q<bacon>, [">= 0"])
       s.add_dependency(%q<muack>, [">= 0"])
       s.add_dependency(%q<tilt>, [">= 0"])
+      s.add_dependency(%q<kramdown>, [">= 0"])
     end
   else
     s.add_dependency(%q<bacon>, [">= 0"])
     s.add_dependency(%q<muack>, [">= 0"])
     s.add_dependency(%q<tilt>, [">= 0"])
+    s.add_dependency(%q<kramdown>, [">= 0"])
   end
 end
