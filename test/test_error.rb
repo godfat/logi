@@ -42,6 +42,7 @@ logi-list ./post/list ./layout/bad
 > ./public/list.html
     MESSAGE
 
-    File.delete(conf.output_path_for(list))
+    File.read(path).should.include('<ul></ul>')
+    File.delete(path)
   end
 end
