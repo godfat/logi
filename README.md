@@ -24,7 +24,7 @@ Highly customizable static blog/wiki generator.
 
 ## REQUIREMENTS:
 
-* Ruby 2.0+ (Also tested with JRuby and Rubinius)
+* Ruby 1.9+ (Also tested with JRuby and Rubinius)
 * Tilt for built-in post/list generator: `gem install tilt`
 
 ## INSTALLATION:
