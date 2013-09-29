@@ -6,7 +6,7 @@ describe Logi do
   logi = Logi.new
   conf = logi.config
   comp = logi.compiler
-  post = Logi::Post.new('post', 'post.md', {})
+  post = Logi::Post.new('post', 'post.md')
 
   after do
     Muack.verify
