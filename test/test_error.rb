@@ -17,6 +17,7 @@ describe Logi do
     mock(conf).posts{ {'path' => post} }
 
     logi.make
+    File.should.not.exist?(conf.output_path_for(post))
 
     $stderr.rewind
     $stderr.read.gsub(/\e\[\d+m/, '').should.eq \
