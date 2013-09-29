@@ -50,7 +50,6 @@ Gem::Specification.new do |s|
   "lib/logi/config.rb",
   "lib/logi/default.rb",
   "lib/logi/layout/default.html.erb",
-  "lib/logi/layout/list.html.erb",
   "lib/logi/loader.rb",
   "lib/logi/logger.rb",
   "lib/logi/post.rb",
