@@ -8,7 +8,7 @@ module Logi::Command; end
 module Logi::Command::List
   extend Logi::Command
 
-  Post = Struct.new(:link, :title) do
+  class Post < Struct.new(:link, :title)
     def <=> that
       link <=> that
     end
