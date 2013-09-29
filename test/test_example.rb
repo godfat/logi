@@ -6,13 +6,15 @@ describe Logi do
   conf = logi.config
   comp = logi.compiler
 
-  should 'make' do
-    conf.posts.each_value do |post|
-      io = comp.compile(post.command,
-                        conf.post_path_for(post),
-                        conf.layout_path_for(post))
+  after do
+    Muack.verify
+  end
 
-      File.read(conf.output_path_for(post)).should.eq io.read
-    end
+  should 'make' do
+    mock(comp).write(is_a(String), is_a(IO)){ |path, io|
+      File.read(path).should.eq(io.read)
+    }.times(conf.posts.size)
+
+    logi.make
   end
 end
