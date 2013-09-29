@@ -10,8 +10,8 @@ module Logi::Default
   def layout
     File.expand_path("#{__dir__}/layout/default.html.erb")
   end
-  def layout_for klass
-    result = File.expand_path("#{__dir__}/layout/#{klass.command}.html.erb")
+  def layout_for cmd
+    result = File.expand_path("#{__dir__}/layout/#{cmd}.html.erb")
     if File.exist?(result)
       result
     else

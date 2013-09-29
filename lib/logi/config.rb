@@ -32,7 +32,7 @@ class Logi::Config < Struct.new(:post_path, :layout_path,
     if layout = post.options[:layout] || default_layout
       "#{root}/#{layout_path}/#{layout}"
     else
-      Logi::Default.layout
+      Logi::Default.layout_for(post.command)
     end
   end
 
