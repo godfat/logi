@@ -11,7 +11,7 @@ class Logi
   end
 
   def make
-    config.posts.each_value do |post|
+    config.posts.values.sort.each do |post|
       io = compiler.compile(post.command,
                             config.post_path_for(post),
                             config.layout_path_for(post))
