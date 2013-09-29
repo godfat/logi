@@ -10,14 +10,18 @@ describe Logi do
     Muack.verify
   end
 
-  should 'make' do
+  def capture_logs comp
     logs = []
     stub(comp).log(is_a(String)){ |msg| logs << "#{msg}\n" }
+    logs
+  end
 
+  should 'make' do
     mock(comp).write(is_a(String), is_a(IO)){ |path, io|
       File.read(path).should.eq(io.read)
     }.times(conf.posts.size)
 
+    logs = capture_logs(comp)
     logi.make
 
     logs.join.gsub(/\e\[\d+m/, '').should.eq <<-MESSAGE
