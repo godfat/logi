@@ -11,5 +11,6 @@ Gemgem.init(dir) do |s|
   s.name    = 'logi'
   s.version = Logi::VERSION
   %w[].each{ |g| s.add_dependency(g) }
-  %w[bacon muack tilt].each{ |g| s.add_development_dependency(g) }
+  %w[bacon muack
+     tilt kramdown].each{ |g| s.add_development_dependency(g) }
 end
