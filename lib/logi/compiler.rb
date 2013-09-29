@@ -15,7 +15,7 @@ class Logi::Compiler
   def compile command, path, layout
     wiki = IO.popen("logi-wiki #{path}", 'r')
     out  = IO.popen("logi-#{command} #{path} #{layout}", 'r+')
-    IO.copy_stream(wiki, out)
+    copy_stream(wiki, out)
     out.close_write
     log_compile(command, path, layout) unless out.eof?
     out
@@ -25,9 +25,17 @@ class Logi::Compiler
     return if out.eof?
     log_write(output)
     FileUtils.mkdir_p(File.dirname(output))
-    IO.copy_stream(out, output)
+    copy_stream(out, output)
   ensure
     out.close
+  end
+
+  def copy_stream from, to
+    IO.copy_stream(from, to)
+  rescue TypeError # JRuby can only copy from file to file
+    to.write(from.read(8192)) until from.eof?
+  ensure
+    from.close
   end
 
   private
