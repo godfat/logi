@@ -26,6 +26,7 @@ Highly customizable static blog/wiki generator.
 
 * Ruby 1.9+ (Also tested with JRuby and Rubinius)
 * Tilt for built-in post/list generator: `gem install tilt`
+* Kramdown for markdown generator: `gem install kramdown`
 
 ## INSTALLATION:
 
