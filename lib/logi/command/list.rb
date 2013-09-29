@@ -22,6 +22,11 @@ module Logi::Command::List
       name = post.sub("#{dir}/", '')
       Post.new(name.sub(/\..+$/, '.html'), name.sub(/\..+$/, ''))
     }.sort
-    puts Tilt.new(check_layout(layout)).render(self)
+    puts Tilt.new(check_layout(layout)).render(self){
+      '<ul>' + @posts.map{ |post|
+                 "<li><a href=\"#{post.link}\">#{post.title}</a></li>"
+               }.join("\n") +
+      '</ul>'
+    }
   end
 end
