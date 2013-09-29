@@ -13,7 +13,7 @@ describe Logi do
   end
 
   should 'show an error if the post does not exist' do
-    $stderr.reopen(Tempfile.new('stderr'))
+    $stderr.reopen(Tempfile.new('stderr'), 'r+')
     mock(conf).posts{ {'path' => post} }
 
     logi.make
